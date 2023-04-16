@@ -10,6 +10,7 @@ stdenv.mkDerivation {
 
     # tools
     neovim
+    vim
     jq
     vscode
     direnv
