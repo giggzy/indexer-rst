@@ -1,0 +1,5 @@
+[workspace]
+
+members = [
+  "process_json_input"
+]
