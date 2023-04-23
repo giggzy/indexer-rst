@@ -3,10 +3,13 @@ with import <nixpkgs> {};
 stdenv.mkDerivation {
   name = "rust-env";
   nativeBuildInputs = [
+
     # rust 
     rustc 
     cargo
     rustfmt
+    rust-analyzer
+    rust-code-analysis
 
     # tools
     neovim
@@ -15,6 +18,12 @@ stdenv.mkDerivation {
     vscode
     direnv
     git
+    zoxide
+    fzf
+    zip
+    unzip
+    curl
+    ripgrep
     
     # python
     python3
@@ -25,8 +34,11 @@ stdenv.mkDerivation {
   buildInputs = [
     # Example Run-time Additional Dependencies
     openssl
+    libiconv  # This is OSX specific and could cause issue on other systems?
+
   ];
 
   # Set Environment Variables
-  RUST_BACKTRACE = 1;
+  #RUST_BACKTRACE = 1;
+  RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
 }
