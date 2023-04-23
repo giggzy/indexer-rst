@@ -3,3 +3,9 @@
 members = [
   "process_json_input"
 ]
+
+[workspace.package]
+version = "1.2.3"
+authors = ["Gabriel Farrell"]
+description = "A short description of my package"
+documentation = "https://example.com/bar"
