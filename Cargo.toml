@@ -1,7 +1,7 @@
 [workspace]
 
 members = [
-  "process_json_input"
+  "process_input"
 ]
 
 [workspace.package]
