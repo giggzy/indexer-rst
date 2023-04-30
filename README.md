@@ -1,4 +1,4 @@
-# Explore build a search index
+# Explore building and querying a search index
 
 ## TODO
 
