@@ -2,5 +2,9 @@
   "cmake.configureOnOpen": true,
   "files.watcherExclude": {
     "**/target": true
-  }
+  },
+  "rust-analyzer.linkedProjects": [
+    "./Cargo.toml",
+    "./Cargo.toml"
+  ]
 }
