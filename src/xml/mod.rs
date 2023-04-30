@@ -51,7 +51,10 @@ pub struct Revision {
 impl Revision {
     pub fn get_text_short(&self) -> String {
         let max_to_show = min(100, self.text.len());
-        self.text[0..max_to_show].to_string() + "..."
+        if max_to_show < self.text.len() {
+            return self.text[0..max_to_show].to_string() + "...";
+        }
+        return self.text.to_string();
     }
 }
 
