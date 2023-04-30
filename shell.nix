@@ -7,6 +7,8 @@ stdenv.mkDerivation {
     # rust 
     rustc 
     cargo
+    cargo-watch
+    cargo-nextest
     rustfmt
     rust-analyzer
     rust-code-analysis
