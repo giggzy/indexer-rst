@@ -11,12 +11,20 @@ use std::{fs::File, io::Read};
 mod tests {
     use super::*;
 
+    fn get_test_xml(filename: String) -> String {
+        // read file into string
+        let mut file = File::open(filename).unwrap();
+        let mut contents = String::new();
+        file.read_to_string(&mut contents).unwrap();
+        return contents;
+    }
     #[test]
     fn test_deserialize_xml() {
         // read file into string
-        let mut file = File::open("data/test.xml").unwrap();
-        let mut contents = String::new();
-        file.read_to_string(&mut contents).unwrap();
+        // let mut file = File::open("data/test.xml").unwrap();
+        // let mut contents = String::new();
+        // file.read_to_string(&mut contents).unwrap();
+        let contents = get_test_xml("data/test.xml".to_string());
 
         let pages = deserialize_xml(contents);
         assert_eq!(pages.len(), 2);
@@ -29,5 +37,13 @@ mod tests {
             pages[1].revision.get_text_short(),
             "#REDIRECT [[Algeria]]{{R from CamelCase}}"
         );
+    }
+
+    #[test]
+    #[should_panic]
+    fn test_deserialize_xml_misformed_file() {
+        let contents = get_test_xml("data/test_bad.xml".to_string());
+        let pages = deserialize_xml(contents);
+        assert_eq!(pages.len(), 2);
     }
 }

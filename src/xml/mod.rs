@@ -1,4 +1,4 @@
-use quick_xml::de::from_str as from_str_xml;
+use quick_xml::de::from_str;
 use serde_derive::{Deserialize, Serialize};
 use std::cmp::min;
 
@@ -72,7 +72,7 @@ pub fn deserialize_xml(contents: String) -> Vec<Page> {
     // time the steps
     let start = std::time::Instant::now();
 
-    let object: Mediawiki = from_str_xml(&contents).unwrap();
+    let object: Mediawiki = from_str(&contents).expect("Error parsing XML");
     println!("Deserialize: {} seconds", start.elapsed().as_secs());
     println!("Deserialize: {} minutes", start.elapsed().as_secs() / 60);
     // print some of the titles

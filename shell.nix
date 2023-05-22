@@ -14,7 +14,6 @@ stdenv.mkDerivation {
     rust-code-analysis
 
     # tools
-    neovim
     vim
     jq
     vscode
