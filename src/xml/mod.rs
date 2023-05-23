@@ -44,7 +44,7 @@ pub struct Revision {
     contributor: Contributor,
     model: Option<String>,
     format: Option<String>,
-    text: String,
+    pub text: String,
     sha1: Option<String>,
 }
 

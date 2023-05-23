@@ -1,7 +1,8 @@
+mod db;
 mod xml;
 
 use clap::{Parser, Subcommand};
-use std::{fs::File, io::Read};
+use std::{dbg, fs::File, io::Read};
 
 #[derive(Parser, Debug)]
 #[command(author, version, about)]
@@ -35,14 +36,18 @@ fn main() {
 
         let pages = xml::deserialize_xml(contents);
         println!("Num. of Wiki Pages Deserialized: {:?}", pages.len());
-        
-        // tokenize on whitespace
-        for page in pages {
-            println!("Page: {:?}", page);
-        }
-        
-    }
 
+        // save each page to sqlite DB
+        for page in pages {
+            db::insert_page(&page);
+            // tokenize on whitespace
+            let tokens: Vec<&str> = page.revision.text.split_whitespace().collect();
+            println!("Page: {}, Tokens count: {}", page.title, tokens.len());
+        }
+
+        let my_page = db::get_page(&"AlgeriA").unwrap();
+        dbg!(my_page.revision_text);
+    }
     // read file into string
     // let mut file = File::open(args.filename.clone()).unwrap();
     // let mut contents = String::new();

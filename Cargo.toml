@@ -9,5 +9,5 @@ edition = "2021"
 quick-xml = { version = "0.28.2", features = ["serialize"] }
 serde = "1.0.160"
 serde_derive = "1.0.160"
-clap = { version = "4.2.5", features = ["derive"]}
-
+clap = { version = "4.2.5", features = ["derive"] }
+rusqlite = "0.29.0"
